@@ -8,25 +8,30 @@ const ui = new UI;
 // Search input
 const searchUser = document.getElementById("searchUser");
 
+//time limit calc
+
+var d = new date (1651367918 * 1000);
+console.log(d);
+
 // Search input event listener
-searchUser.addEventListener("keyup", (e) => {
+searchUser.addEventListener('keyup', (e) => {
   // Get input text
   const userText = e.target.value;
 
-  if (userText !== "") {
-    // console.log(userText);
-    // Make http call
-    github.getUser(userText)
+  if(userText !== ''){
+   // Make http call
+   github.getUser(userText)
     .then(data => {
-      if(data.profile.message === "Not Found") {
-        //Show alert not found
-
+      if(data.profile.message === 'Not Found') {
+        // Show alert
+        ui.showAlert('User not found', 'alert alert-danger');
       } else {
-        //Show profile returned
+        // Show profile
         ui.showProfile(data.profile);
       }
-    });
+    })
   } else {
-    //Clear profile
+    // Clear profile
+    ui.clearProfile();
   }
-});
+}); 
