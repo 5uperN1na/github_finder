@@ -8,10 +8,7 @@ const ui = new UI;
 // Search input
 const searchUser = document.getElementById("searchUser");
 
-//time limit calc
-
-var d = new date (1651367918 * 1000);
-console.log(d);
+ 
 
 // Search input event listener
 searchUser.addEventListener('keyup', (e) => {
@@ -28,6 +25,7 @@ searchUser.addEventListener('keyup', (e) => {
       } else {
         // Show profile
         ui.showProfile(data.profile);
+        ui.showRepos(data.repos);
       }
     })
   } else {
